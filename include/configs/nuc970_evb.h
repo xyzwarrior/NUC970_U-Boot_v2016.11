@@ -44,10 +44,10 @@
 
 /*#define CONFIG_NUC970_HW_CHECKSUM */
 
-/*#define CONFIG_SYS_USE_SPIFLASH */
-#define CONFIG_SYS_USE_NANDFLASH  
-#define CONFIG_ENV_IS_IN_NAND 
-/*#define CONFIG_ENV_IS_IN_SPI_FLASH */
+#define CONFIG_SYS_USE_SPIFLASH
+/*#define CONFIG_SYS_USE_NANDFLASH */
+/*#define CONFIG_ENV_IS_IN_NAND */
+#define CONFIG_ENV_IS_IN_SPI_FLASH
 /*#define CONFIG_ENV_IS_IN_MMC */
 
 #define CONFIG_BOARD_EARLY_INIT_F
@@ -169,8 +169,19 @@
 /* SPI flash */
 #ifdef CONFIG_SYS_USE_SPIFLASH
 #define CONFIG_SPI              1
+
+#define CONFIG_CMD_MTDPARTS    1
+#define CONFIG_MTD_DEVICE      1
+#define CONFIG_MTD_PARTITIONS  1
+#define CONFIG_RBTREE          1
+#define CONFIG_LZO             1
+#define CONFIG_SYS_MAX_NAND_DEVICE      1
+#define MTDIDS_DEFAULT "nor0=m25p80"
+#define MTDPARTS_DEFAULT "mtdparts=m25p80:384k(u-boot),128k(u-boot-env),-(obmc-ubi)"
+#define MTD_ACTIVE_PART "nor0,2"
+
 #ifdef CONFIG_ENV_IS_IN_SPI_FLASH
-#define CONFIG_ENV_OFFSET       0x80000
+#define CONFIG_ENV_OFFSET       0x60000
 #define CONFIG_ENV_SIZE         0x10000
 #define CONFIG_ENV_SECT_SIZE    0x10000
 #define CONFIG_ENV_OVERWRITE
