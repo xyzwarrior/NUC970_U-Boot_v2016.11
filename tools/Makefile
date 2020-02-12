@@ -263,7 +263,7 @@ $(LICENSE_H): $(obj)/bin2header $(srctree)/Licenses/gpl-2.0.txt
 subdir- += env
 
 ifneq ($(CROSS_BUILD_TOOLS),)
-HOSTCC = $(CC)
+override HOSTCC = $(CC)
 
 quiet_cmd_crosstools_strip = STRIP   $^
       cmd_crosstools_strip = $(STRIP) $^; touch $@
