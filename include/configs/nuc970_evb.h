@@ -175,7 +175,11 @@
 #define CONFIG_MTD_PARTITIONS  1
 #define CONFIG_RBTREE          1
 #define CONFIG_LZO             1
+
 #define CONFIG_SYS_MAX_NAND_DEVICE      1
+#define CONFIG_SYS_NAND_BASE	0xB000D000
+#define CONFIG_SYS_NAND_ECCBYTES        12
+
 #define MTDIDS_DEFAULT "nor0=m25p80"
 #define MTDPARTS_DEFAULT "mtdparts=m25p80:384k(u-boot),128k(u-boot-env),-(obmc-ubi)"
 #define MTD_ACTIVE_PART "nor0,2"
